@@ -74,6 +74,7 @@ app.post('/videos', (req: Request, res: Response) => {
     const validationResult = validateVideo(newVideo);
     if(validationResult.errorsMessages.length > 0) {
         res.status(400).send(validationResult);
+        return;
     }
     const newId = db.videos.length;
     newVideo.id = newId;
